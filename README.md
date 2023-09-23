@@ -18,79 +18,99 @@ limitations under the License.
 
 -->
 
-# ceiln
+
+<details>
+  <summary>
+    About stdlib...
+  </summary>
+  <p>We believe in a future in which the web is a preferred environment for numerical computation. To help realize this future, we've built stdlib. stdlib is a standard library, with an emphasis on numerical and scientific computation, written in JavaScript (and C) for execution in browsers and in Node.js.</p>
+  <p>The library is fully decomposable, being architected in such a way that you can swap out and mix and match APIs and functionality to cater to your exact preferences and use cases.</p>
+  <p>When you use stdlib, you can be absolutely certain that you are using the most thorough, rigorous, well-written, studied, documented, tested, measured, and high-quality code out there.</p>
+  <p>To join us in bringing numerical computing to the web, get started by checking us out on <a href="https://github.com/stdlib-js/stdlib">GitHub</a>, and please consider <a href="https://opencollective.com/stdlib">financially supporting stdlib</a>. We greatly appreciate your continued support!</p>
+</details>
+
+# cceiln
 
 [![NPM version][npm-image]][npm-url] [![Build Status][test-image]][test-url] [![Coverage Status][coverage-image]][coverage-url] <!-- [![dependencies][dependencies-image]][dependencies-url] -->
 
-> Round a complex number to the nearest multiple of `10^n` toward positive infinity.
+> Round each component of a double-precision complex floating-point number to the nearest multiple of `10^n` toward positive infinity.
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/math-base-special-cceiln
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm` branch][esm-url].
+-   If you are using Deno, visit the [`deno` branch][deno-url].
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd` branch][umd-url].
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
-To use in Observable,
+```javascript
+var cceiln = require( '@stdlib/math-base-special-cceiln' );
+```
+
+#### cceiln( z, n )
+
+Rounds each component of a double-precision complex floating-point number to the nearest multiple of `10^n` toward positive infinity.
 
 ```javascript
-cceiln = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-cceiln@umd/browser.js' )
-```
+var Complex128 = require( '@stdlib/complex-float64' );
+var real = require( '@stdlib/complex-real' );
+var imag = require( '@stdlib/complex-imag' );
 
-To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
-
-```javascript
-var cceiln = require( 'path/to/vendor/umd/math-base-special-cceiln/index.js' )
-```
-
-To include the bundle in a webpage,
-
-```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-cceiln@umd/browser.js"></script>
-```
-
-If no recognized module system is present, access bundle contents via the global scope:
-
-```html
-<script type="text/javascript">
-(function () {
-    window.cceiln;
-})();
-</script>
-```
-
-#### cceiln( \[out,] re, im, n )
-
-Rounds a `complex` number comprised of a **real** component `re` and an **imaginary** component `im` to the nearest multiple of `10^n` toward positive infinity.
-
-```javascript
 // Round components to 2 decimal places:
-var v = cceiln( -3.141592653589793, 3.141592653589793, -2 );
-// returns [ -3.14, 3.15 ]
+var z = new Complex128( -3.141592653589793, 3.141592653589793 );
+var v = cceiln( z, -2 );
+// returns <Complex128>
+
+var re = real( v );
+// returns -3.14
+
+var im = imag( v );
+// returns 3.15
 
 // If n = 0, `cceiln` behaves like `cceil`:
-v = cceiln( -3.141592653589793, 3.141592653589793, 0 );
-// returns [ -3.0, 4.0 ]
+z = new Complex128( 9.99999, 0.1 );
+v = cceiln( z, 0 );
+// returns <Complex128>
+
+re = real( v );
+// returns 10.0
+
+im = imag( v );
+// returns 1.0
 
 // Round components to the nearest thousand:
-v = cceiln( -12368.0, 12368.0, 3 );
-// returns [ -12000.0, 13000.0 ]
+z = new Complex128( 12368.0, -12368.0 );
+v = cceiln( z, 3 );
+// returns <Complex128>
 
-v = cceiln( NaN, NaN, 0 );
-// returns [ NaN, NaN ]
-```
+re = real( v );
+// returns 13000.0
 
-By default, the function returns real and imaginary components as a two-element `array`. To avoid unnecessary memory allocation, the function supports providing an output (destination) object.
+im = imag( v );
+// returns -12000.0
 
-```javascript
-var Float32Array = require( '@stdlib/array-float32' );
+v = cceiln( new Complex128( NaN, NaN ), 2 );
+// returns <Complex128>
 
-var out = new Float32Array( 2 );
+re = real( v );
+// returns NaN
 
-var v = cceiln( out, -4.2, 5.5, 0 );
-// returns <Float32Array>[ -4.0, 6.0 ]
-
-var bool = ( v === out );
-// returns true
+im = imag( v );
+// returns NaN
 ```
 
 </section>
@@ -104,12 +124,22 @@ var bool = ( v === out );
 -   When operating on [floating-point numbers][ieee754] in bases other than `2`, rounding to specified digits can be **inexact**. For example,
 
     ```javascript
+    var Complex128 = require( '@stdlib/complex-float64' );
+    var real = require( '@stdlib/complex-real' );
+    var imag = require( '@stdlib/complex-imag' );
+
     var x = 0.2 + 0.1;
     // returns 0.30000000000000004
 
     // Should round components to 0.3:
-    var v = cceiln( x, x, -16 );
-    // returns [ 0.3000000000000001, 0.3000000000000001 ]
+    var v = cceiln( new Complex128( x, x ), -16 );
+    // returns <Complex128>
+
+    var re = real( v );
+    // returns 0.3000000000000001
+
+    var im = imag( v );
+    // returns 0.3000000000000001
     ```
 
 </section>
@@ -122,48 +152,141 @@ var bool = ( v === out );
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/complex-float64@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/random-base-randu@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-ceil@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/complex-real@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/complex-imag@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-cceiln@umd/browser.js"></script>
-<script type="text/javascript">
-(function () {
+```javascript
+var uniform = require( '@stdlib/random-base-uniform' ).factory;
+var discreteUniform = require( '@stdlib/random-base-discrete-uniform' ).factory;
+var Complex128 = require( '@stdlib/complex-float64' );
+var ceil = require( '@stdlib/math-base-special-ceil' );
+var cceiln = require( '@stdlib/math-base-special-cceiln' );
 
-var re;
-var im;
+var rand1 = uniform( -50.0, 50.0 );
+var rand2 = discreteUniform( -5.0, 0.0 );
+
 var z;
-var o;
-var w;
-var n;
 var i;
-
+var n;
 for ( i = 0; i < 100; i++ ) {
-    re = ( randu()*100.0 ) - 50.0;
-    im = ( randu()*100.0 ) - 50.0;
-    z = new Complex128( re, im );
-
-    n = ceil( randu()*5.0 );
-    o = cceiln( real(z), imag(z), -n );
-    w = new Complex128( o[ 0 ], o[ 1 ] );
-
-    console.log( 'ceiln(%s,%s) = %s', z.toString(), n.toString(), w.toString() );
+    n = rand2();
+    z = new Complex128( rand1(), rand1() );
+    console.log( 'cceiln(%s, %s) = %s', z, n, cceiln( z, n ) );
 }
-
-})();
-</script>
-</body>
-</html>
 ```
 
 </section>
 
 <!-- /.examples -->
+
+<!-- C interface documentation. -->
+
+* * *
+
+<section class="c">
+
+## C APIs
+
+<!-- Section to include introductory text. Make sure to keep an empty line after the intro `section` element and another before the `/section` close. -->
+
+<section class="intro">
+
+</section>
+
+<!-- /.intro -->
+
+<!-- C usage documentation. -->
+
+<section class="usage">
+
+### Usage
+
+```c
+#include "stdlib/math/base/special/cceiln.h"
+```
+
+#### stdlib_base_cceiln( z, n )
+
+Rounds each component of a double-precision complex floating-point number to the nearest multiple of `10^n` toward positive infinity.
+
+```c
+#include "stdlib/complex/float64.h"
+#include "stdlib/complex/real.h"
+#include "stdlib/complex/imag.h"
+
+stdlib_complex128_t z = stdlib_complex128( -3.141592653589793, 3.141592653589793 );
+
+stdlib_complex128_t out = stdlib_base_cceiln( z, -2 );
+
+double re = stdlib_real( out );
+// returns -3.14
+
+double im = stdlib_imag( out );
+// returns 3.15
+```
+
+The function accepts the following arguments:
+
+-   **z**: `[in] stdlib_complex128_t` input value.
+-   **n**: `[in] int32_t` integer power of 10.
+
+```c
+stdlib_complex128_t stdlib_base_cceiln( const stdlib_complex128_t z, int32_t n );
+```
+
+</section>
+
+<!-- /.usage -->
+
+<!-- C API usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
+
+<section class="notes">
+
+</section>
+
+<!-- /.notes -->
+
+<!-- C API usage examples. -->
+
+<section class="examples">
+
+### Examples
+
+```c
+#include "stdlib/math/base/special/cceiln.h"
+#include "stdlib/complex/float64.h"
+#include "stdlib/complex/reim.h"
+#include <stdio.h>
+
+int main() {
+    const stdlib_complex128_t x[] = {
+        stdlib_complex128( 3.14, 1.5 ),
+        stdlib_complex128( -3.14, -1.5 ),
+        stdlib_complex128( 0.0, 0.0 ),
+        stdlib_complex128( 0.0/0.0, 0.0/0.0 )
+    };
+
+    stdlib_complex128_t v;
+    stdlib_complex128_t y;
+    double re1;
+    double im1;
+    double re2;
+    double im2;
+    int i;
+    for ( i = 0; i < 4; i++ ) {
+        v = x[ i ];
+        y = stdlib_base_cceiln( v, -2 );
+        stdlib_reim( v, &re1, &im1 );
+        stdlib_reim( y, &re2, &im2 );
+        printf( "cceiln(%lf + %lfi, -2) = %lf + %lfi\n", re1, im1, re2, im2 );
+    }
+}
+```
+
+</section>
+
+<!-- /.examples -->
+
+</section>
+
+<!-- /.c -->
 
 <!-- Section for related `stdlib` packages. Do not manually edit this section, as it is automatically populated. -->
 
@@ -254,11 +377,11 @@ Copyright &copy; 2016-2023. The Stdlib [Authors][stdlib-authors].
 
 <!-- <related-links> -->
 
-[@stdlib/math/base/special/cceil]: https://github.com/stdlib-js/math-base-special-cceil/tree/umd
+[@stdlib/math/base/special/cceil]: https://github.com/stdlib-js/math-base-special-cceil
 
-[@stdlib/math/base/special/cfloorn]: https://github.com/stdlib-js/math-base-special-cfloorn/tree/umd
+[@stdlib/math/base/special/cfloorn]: https://github.com/stdlib-js/math-base-special-cfloorn
 
-[@stdlib/math/base/special/croundn]: https://github.com/stdlib-js/math-base-special-croundn/tree/umd
+[@stdlib/math/base/special/croundn]: https://github.com/stdlib-js/math-base-special-croundn
 
 <!-- </related-links> -->
 
