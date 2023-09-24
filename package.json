@@ -1,6 +1,6 @@
 {
   "name": "@stdlib/math-base-special-cceiln",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "Round each component of a double-precision complex floating-point number to the nearest multiple of 10^n toward positive infinity.",
   "license": "Apache-2.0",
   "author": {
@@ -44,8 +44,8 @@
     "@stdlib/complex-imag": "^0.1.0",
     "@stdlib/complex-real": "^0.1.0",
     "@stdlib/complex-reim": "^0.1.0",
-    "@stdlib/math-base-napi-binary": "^0.0.8",
-    "@stdlib/math-base-special-ceiln": "^0.0.6",
+    "@stdlib/math-base-napi-binary": "^0.1.0",
+    "@stdlib/math-base-special-ceiln": "^0.1.0",
     "@stdlib/types": "^0.1.0",
     "@stdlib/utils-library-manifest": "^0.1.0"
   },
@@ -59,7 +59,7 @@
     "@stdlib/math-base-assert-is-negative-zero": "^0.1.0",
     "@stdlib/math-base-assert-is-positive-zero": "^0.1.0",
     "@stdlib/math-base-special-abs": "^0.1.0",
-    "@stdlib/math-base-special-pow": "^0.0.7",
+    "@stdlib/math-base-special-pow": "^0.1.0",
     "@stdlib/math-base-special-round": "^0.1.0",
     "@stdlib/random-base-discrete-uniform": "^0.0.6",
     "@stdlib/random-base-randu": "^0.0.8",
