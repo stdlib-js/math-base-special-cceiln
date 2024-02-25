@@ -42,7 +42,7 @@ limitations under the License.
 ## Usage
 
 ```javascript
-import cceiln from 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-cceiln@deno/mod.js';
+import cceiln from 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-cceiln@v0.2.1-deno/mod.js';
 ```
 
 #### cceiln( z, n )
@@ -141,7 +141,7 @@ var uniform = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/random-base-unifor
 var discreteUniform = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/random-base-discrete-uniform' ).factory;
 import Complex128 from 'https://cdn.jsdelivr.net/gh/stdlib-js/complex-float64@deno/mod.js';
 import ceil from 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-ceil@deno/mod.js';
-import cceiln from 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-cceiln@deno/mod.js';
+import cceiln from 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-cceiln@v0.2.1-deno/mod.js';
 
 var rand1 = uniform( -50.0, 50.0 );
 var rand2 = discreteUniform( -5.0, 0.0 );
