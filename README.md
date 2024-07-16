@@ -68,7 +68,7 @@ var cceiln = require( '@stdlib/math-base-special-cceiln' );
 Rounds each component of a double-precision complex floating-point number to the nearest multiple of `10^n` toward positive infinity.
 
 ```javascript
-var Complex128 = require( '@stdlib/complex-float64' );
+var Complex128 = require( '@stdlib/complex-float64-ctor' );
 var real = require( '@stdlib/complex-real' );
 var imag = require( '@stdlib/complex-imag' );
 
@@ -126,7 +126,7 @@ im = imag( v );
 -   When operating on [floating-point numbers][ieee754] in bases other than `2`, rounding to specified digits can be **inexact**. For example,
 
     ```javascript
-    var Complex128 = require( '@stdlib/complex-float64' );
+    var Complex128 = require( '@stdlib/complex-float64-ctor' );
     var real = require( '@stdlib/complex-real' );
     var imag = require( '@stdlib/complex-imag' );
 
@@ -157,7 +157,7 @@ im = imag( v );
 ```javascript
 var uniform = require( '@stdlib/random-base-uniform' ).factory;
 var discreteUniform = require( '@stdlib/random-base-discrete-uniform' ).factory;
-var Complex128 = require( '@stdlib/complex-float64' );
+var Complex128 = require( '@stdlib/complex-float64-ctor' );
 var ceil = require( '@stdlib/math-base-special-ceil' );
 var cceiln = require( '@stdlib/math-base-special-cceiln' );
 
@@ -209,7 +209,7 @@ for ( i = 0; i < 100; i++ ) {
 Rounds each component of a double-precision complex floating-point number to the nearest multiple of `10^n` toward positive infinity.
 
 ```c
-#include "stdlib/complex/float64.h"
+#include "stdlib/complex/float64/ctor.h"
 #include "stdlib/complex/real.h"
 #include "stdlib/complex/imag.h"
 
@@ -253,8 +253,8 @@ stdlib_complex128_t stdlib_base_cceiln( const stdlib_complex128_t z, int32_t n )
 
 ```c
 #include "stdlib/math/base/special/cceiln.h"
-#include "stdlib/complex/float64.h"
-#include "stdlib/complex/reim.h"
+#include "stdlib/complex/float64/ctor.h"
+#include "stdlib/complex/float64/reim.h"
 #include <stdio.h>
 
 int main() {
@@ -275,8 +275,8 @@ int main() {
     for ( i = 0; i < 4; i++ ) {
         v = x[ i ];
         y = stdlib_base_cceiln( v, -2 );
-        stdlib_reim( v, &re1, &im1 );
-        stdlib_reim( y, &re2, &im2 );
+        stdlib_complex128_reim( v, &re1, &im1 );
+        stdlib_complex128_reim( y, &re2, &im2 );
         printf( "cceiln(%lf + %lfi, -2) = %lf + %lfi\n", re1, im1, re2, im2 );
     }
 }

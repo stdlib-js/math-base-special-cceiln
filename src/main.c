@@ -18,8 +18,8 @@
 
 #include "stdlib/math/base/special/cceiln.h"
 #include "stdlib/math/base/special/ceiln.h"
-#include "stdlib/complex/float64.h"
-#include "stdlib/complex/reim.h"
+#include "stdlib/complex/float64/ctor.h"
+#include "stdlib/complex/float64/reim.h"
 
 /**
 * Rounds each component of a double-precision complex floating-point number to the nearest multiple of `10^n` toward positive infinity.
@@ -29,7 +29,7 @@
 * @return        result
 *
 * @example
-* #include "stdlib/complex/float64.h"
+* #include "stdlib/complex/float64/ctor.h"
 * #include "stdlib/complex/real.h"
 * #include "stdlib/complex/imag.h"
 *
@@ -47,7 +47,7 @@ stdlib_complex128_t stdlib_base_cceiln( const stdlib_complex128_t z, const int32
 	double re;
 	double im;
 
-	stdlib_reim( z, &re, &im );
+	stdlib_complex128_reim( z, &re, &im );
 
 	re = stdlib_base_ceiln( re, n );
 	im = stdlib_base_ceiln( im, n );
