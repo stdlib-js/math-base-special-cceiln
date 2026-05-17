@@ -4,7 +4,7 @@
 
 <section class="release" id="unreleased">
 
-## Unreleased (2026-05-01)
+## Unreleased (2026-05-17)
 
 <section class="commits">
 
@@ -12,6 +12,7 @@
 
 <details>
 
+-   [`906bab9`](https://github.com/stdlib-js/stdlib/commit/906bab98b9f33bc8c3a92e58eeafa2942990d5ab) - **docs:** propagate lint and example fixes to `math` and `stats` siblings [(#12146)](https://github.com/stdlib-js/stdlib/pull/12146) _(by Philipp Burckhardt)_
 -   [`c73c8b3`](https://github.com/stdlib-js/stdlib/commit/c73c8b39bd76529182ea2b3423c6f0feab434774) - **bench:** refactor to use string interpolation in `math/base/special` [(#11387)](https://github.com/stdlib-js/stdlib/pull/11387) _(by Karan Anand)_
 -   [`53641f6`](https://github.com/stdlib-js/stdlib/commit/53641f68e978d8c972ff6d0b8129ac40977d2e5e) - **docs:** improve doctests for complex number instances in `math/base/special/cceiln` [(#10213)](https://github.com/stdlib-js/stdlib/pull/10213) _(by AyushiJain18270, Athan Reines, stdlib-bot)_
 
@@ -25,11 +26,12 @@
 
 ### Contributors
 
-A total of 3 people contributed to this release. Thank you to the following contributors:
+A total of 4 people contributed to this release. Thank you to the following contributors:
 
 -   Athan Reines
 -   AyushiJain18270
 -   Karan Anand
+-   Philipp Burckhardt
 
 </section>
 
